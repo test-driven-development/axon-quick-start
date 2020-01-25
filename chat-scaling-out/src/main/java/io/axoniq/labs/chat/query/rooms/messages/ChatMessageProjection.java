@@ -14,25 +14,25 @@ import java.util.List;
 @Component
 public class ChatMessageProjection {
 
-    private final ChatMessageRepository repository;
+  private final ChatMessageRepository repository;
 
-    private final QueryUpdateEmitter updateEmitter;
+  private final QueryUpdateEmitter updateEmitter;
 
-    public ChatMessageProjection(ChatMessageRepository repository,
-                                 QueryUpdateEmitter updateEmitter) {
-        this.repository = repository;
-        this.updateEmitter = updateEmitter;
-    }
+  public ChatMessageProjection(ChatMessageRepository repository,
+    QueryUpdateEmitter updateEmitter) {
+    this.repository = repository;
+    this.updateEmitter = updateEmitter;
+  }
 
-    @QueryHandler
-    public List<ChatMessage> on(RoomMessagesQuery query) {
-        return repository.findAllByRoomIdOrderByTimestamp(query.getRoomId());
-    }
+  @QueryHandler
+  public List<ChatMessage> on(RoomMessagesQuery query) {
+    return repository.findAllByRoomIdOrderByTimestamp(query.getRoomId());
+  }
 
-    @EventHandler
-    public void on(MessagePostedEvent evt, @Timestamp Instant timestamp) {
-        ChatMessage chatMessage = new ChatMessage(evt.getParticipant(), evt.getRoomId(), evt.getMessage(), timestamp.toEpochMilli());
-        repository.save(chatMessage);
-        updateEmitter.emit(RoomMessagesQuery.class, query -> query.getRoomId().equals(evt.getRoomId()), chatMessage);
-    }
+  @EventHandler
+  public void on(MessagePostedEvent evt, @Timestamp Instant timestamp) {
+    ChatMessage chatMessage = new ChatMessage(evt.getParticipant(), evt.getRoomId(), evt.getMessage(), timestamp.toEpochMilli());
+    repository.save(chatMessage);
+    updateEmitter.emit(RoomMessagesQuery.class, query -> query.getRoomId().equals(evt.getRoomId()), chatMessage);
+  }
 }

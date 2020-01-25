@@ -15,52 +15,52 @@ import static org.axonframework.modelling.command.AggregateLifecycle.apply;
 @Aggregate
 public class ChatRoom {
 
-    @AggregateIdentifier
-    private String roomId;
-    private Set<String> participants;
+  @AggregateIdentifier
+  private String roomId;
+  private Set<String> participants;
 
-    public ChatRoom() {
-    }
+  public ChatRoom() {
+  }
 
-    @CommandHandler
-    public ChatRoom(CreateRoomCommand command) {
-        apply(new RoomCreatedEvent(command.getRoomId(), command.getName()));
-    }
+  @CommandHandler
+  public ChatRoom(CreateRoomCommand command) {
+    apply(new RoomCreatedEvent(command.getRoomId(), command.getName()));
+  }
 
-    @CommandHandler
-    public void handle(JoinRoomCommand command) {
-        if (!participants.contains(command.getParticipant())) {
-            apply(new ParticipantJoinedRoomEvent(command.getParticipant(), roomId));
-        }
+  @CommandHandler
+  public void handle(JoinRoomCommand command) {
+    if(!participants.contains(command.getParticipant())) {
+      apply(new ParticipantJoinedRoomEvent(command.getParticipant(), roomId));
     }
+  }
 
-    @CommandHandler
-    public void handle(LeaveRoomCommand command) {
-        if (participants.contains(command.getParticipant())) {
-            apply(new ParticipantLeftRoomEvent(command.getParticipant(), roomId));
-        }
+  @CommandHandler
+  public void handle(LeaveRoomCommand command) {
+    if(participants.contains(command.getParticipant())) {
+      apply(new ParticipantLeftRoomEvent(command.getParticipant(), roomId));
     }
+  }
 
-    @CommandHandler
-    public void handle(PostMessageCommand command) {
-        Assert.state(participants.contains(command.getParticipant()),
-                     "You cannot post messages unless you've joined the chat room");
-        apply(new MessagePostedEvent(command.getParticipant(), roomId, command.getMessage()));
-    }
+  @CommandHandler
+  public void handle(PostMessageCommand command) {
+    Assert.state(participants.contains(command.getParticipant()),
+      "You cannot post messages unless you've joined the chat room");
+    apply(new MessagePostedEvent(command.getParticipant(), roomId, command.getMessage()));
+  }
 
-    @EventSourcingHandler
-    protected void on(RoomCreatedEvent event) {
-        this.roomId = event.getRoomId();
-        this.participants = new HashSet<>();
-    }
+  @EventSourcingHandler
+  protected void on(RoomCreatedEvent event) {
+    this.roomId = event.getRoomId();
+    this.participants = new HashSet<>();
+  }
 
-    @EventSourcingHandler
-    protected void on(ParticipantJoinedRoomEvent event) {
-        this.participants.add(event.getParticipant());
-    }
+  @EventSourcingHandler
+  protected void on(ParticipantJoinedRoomEvent event) {
+    this.participants.add(event.getParticipant());
+  }
 
-    @EventSourcingHandler
-    protected void on(ParticipantLeftRoomEvent event) {
-        this.participants.remove(event.getParticipant());
-    }
+  @EventSourcingHandler
+  protected void on(ParticipantLeftRoomEvent event) {
+    this.participants.remove(event.getParticipant());
+  }
 }

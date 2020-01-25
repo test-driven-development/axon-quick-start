@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface RoomParticipantsRepository extends JpaRepository<RoomParticipant, Long> {
 
-    List<RoomParticipant> findRoomParticipantsByRoomId(String roomId);
+  List<RoomParticipant> findRoomParticipantsByRoomId(String roomId);
 
-    void deleteByParticipantAndRoomId(String participant, String roomId);
+  void deleteByParticipantAndRoomId(String participant, String roomId);
 }

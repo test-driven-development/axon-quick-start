@@ -12,23 +12,23 @@ import org.springframework.test.context.junit4.SpringRunner;
 @SpringBootTest
 public class ChatScalingOutApplicationTests {
 
-    private static Server server;
+  private static Server server;
 
-    @BeforeClass
-    public static void beforeClass() throws Exception {
-        server = Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092");
-        server.start();
-    }
+  @BeforeClass
+  public static void beforeClass() throws Exception {
+    server = Server.createTcpServer("-tcp", "-tcpAllowOthers", "-tcpPort", "9092");
+    server.start();
+  }
 
-    @AfterClass
-    public static void afterClass() {
-        if (server != null) {
-            server.stop();
-        }
+  @AfterClass
+  public static void afterClass() {
+    if(server != null) {
+      server.stop();
     }
+  }
 
-    @Test
-    public void contextLoads() {
-    }
+  @Test
+  public void contextLoads() {
+  }
 
 }

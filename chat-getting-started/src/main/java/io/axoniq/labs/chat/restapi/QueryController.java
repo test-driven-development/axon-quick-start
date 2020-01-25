@@ -15,33 +15,33 @@ import java.util.concurrent.Future;
 @RestController
 public class QueryController {
 
-    private final QueryGateway gateway;
+  private final QueryGateway gateway;
 
-    public QueryController(QueryGateway gateway) {
-        this.gateway = gateway;
-    }
+  public QueryController(QueryGateway gateway) {
+    this.gateway = gateway;
+  }
 
-    @GetMapping("rooms")
-    public Future<List<RoomSummary>> listRooms() {
-        // TODO: Send a query for this API call
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
+  @GetMapping("rooms")
+  public Future<List<RoomSummary>> listRooms() {
+    // TODO: Send a query for this API call
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
 
-    @GetMapping("/rooms/{roomId}/participants")
-    public Future<List<String>> participantsInRoom(@PathVariable String roomId) {
-        // TODO: Send a query for this API call
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
+  @GetMapping("/rooms/{roomId}/participants")
+  public Future<List<String>> participantsInRoom(@PathVariable String roomId) {
+    // TODO: Send a query for this API call
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
 
-    @GetMapping("/rooms/{roomId}/messages")
-    public Future<List<ChatMessage>> roomMessages(@PathVariable String roomId) {
-        // TODO: Send a query for this API call
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
+  @GetMapping("/rooms/{roomId}/messages")
+  public Future<List<ChatMessage>> roomMessages(@PathVariable String roomId) {
+    // TODO: Send a query for this API call
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
 
-    @GetMapping(value = "/rooms/{roomId}/messages/subscribe", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-    public Flux<ChatMessage> subscribeRoomMessages(@PathVariable String roomId) {
-        // TODO: Send a subscription query for this API call
-        throw new UnsupportedOperationException("Not implemented yet");
-    }
+  @GetMapping(value = "/rooms/{roomId}/messages/subscribe", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
+  public Flux<ChatMessage> subscribeRoomMessages(@PathVariable String roomId) {
+    // TODO: Send a subscription query for this API call
+    throw new UnsupportedOperationException("Not implemented yet");
+  }
 }

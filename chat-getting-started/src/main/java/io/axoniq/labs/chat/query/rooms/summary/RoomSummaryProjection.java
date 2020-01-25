@@ -5,14 +5,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class RoomSummaryProjection {
 
-    private final RoomSummaryRepository roomSummaryRepository;
+  private final RoomSummaryRepository roomSummaryRepository;
 
-    public RoomSummaryProjection(RoomSummaryRepository roomSummaryRepository) {
-        this.roomSummaryRepository = roomSummaryRepository;
-    }
+  public RoomSummaryProjection(RoomSummaryRepository roomSummaryRepository) {
+    this.roomSummaryRepository = roomSummaryRepository;
+  }
 
-    // TODO: Create some event handlers that update this model when necessary
+  // TODO: Create some event handlers that update this model when necessary
 
-    // TODO: Create the query handler to read data from this model
+  // TODO: Create the query handler to read data from this model
 
 }

@@ -6,36 +6,36 @@ import javax.persistence.Id;
 @Entity
 public class RoomSummary {
 
-    @Id
-    private String roomId;
-    private String name;
-    private int participants;
+  @Id
+  private String roomId;
+  private String name;
+  private int participants;
 
-    public RoomSummary() {
-    }
+  public RoomSummary() {
+  }
 
-    public RoomSummary(String roomId, String name) {
-        this.roomId = roomId;
-        this.name = name;
-    }
+  public RoomSummary(String roomId, String name) {
+    this.roomId = roomId;
+    this.name = name;
+  }
 
-    public String getRoomId() {
-        return roomId;
-    }
+  public String getRoomId() {
+    return roomId;
+  }
 
-    public String getName() {
-        return name;
-    }
+  public String getName() {
+    return name;
+  }
 
-    public void addParticipant() {
-        this.participants++;
-    }
+  public void addParticipant() {
+    this.participants++;
+  }
 
-    public void removeParticipant() {
-        this.participants--;
-    }
+  public void removeParticipant() {
+    this.participants--;
+  }
 
-    public int getParticipants() {
-        return participants;
-    }
+  public int getParticipants() {
+    return participants;
+  }
 }

@@ -14,21 +14,21 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @SpringBootApplication
 public class ChatGettingStartedApplication {
 
-    public static void main(String[] args) {
-        SpringApplication.run(ChatGettingStartedApplication.class, args);
-    }
+  public static void main(String[] args) {
+    SpringApplication.run(ChatGettingStartedApplication.class, args);
+  }
 
-    @Configuration
-    @EnableSwagger2
-    public static class SwaggerConfig {
-        @Bean
-        public Docket api() {
-            return new Docket(DocumentationType.SWAGGER_2)
-                    .select()
-                    .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework")))
-                    .paths(PathSelectors.any())
-                    .build();
-        }
+  @Configuration
+  @EnableSwagger2
+  public static class SwaggerConfig {
+    @Bean
+    public Docket api() {
+      return new Docket(DocumentationType.SWAGGER_2)
+        .select()
+        .apis(Predicates.not(RequestHandlerSelectors.basePackage("org.springframework")))
+        .paths(PathSelectors.any())
+        .build();
     }
+  }
 
 }

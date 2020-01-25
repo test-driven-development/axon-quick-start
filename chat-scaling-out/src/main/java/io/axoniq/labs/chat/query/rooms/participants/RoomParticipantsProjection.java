@@ -14,26 +14,26 @@ import static java.util.stream.Collectors.toList;
 @Component
 public class RoomParticipantsProjection {
 
-    private final RoomParticipantsRepository repository;
+  private final RoomParticipantsRepository repository;
 
-    public RoomParticipantsProjection(RoomParticipantsRepository repository) {
-        this.repository = repository;
-    }
+  public RoomParticipantsProjection(RoomParticipantsRepository repository) {
+    this.repository = repository;
+  }
 
-    @QueryHandler
-    public List<String> on(RoomParticipantsQuery query) {
-        return repository.findRoomParticipantsByRoomId(query.getRoomId())
-                         .stream()
-                         .map(RoomParticipant::getParticipant).sorted().collect(toList());
-    }
+  @QueryHandler
+  public List<String> on(RoomParticipantsQuery query) {
+    return repository.findRoomParticipantsByRoomId(query.getRoomId())
+      .stream()
+      .map(RoomParticipant::getParticipant).sorted().collect(toList());
+  }
 
-    @EventHandler
-    public void on(ParticipantJoinedRoomEvent event) {
-        repository.save(new RoomParticipant(event.getRoomId(), event.getParticipant()));
-    }
+  @EventHandler
+  public void on(ParticipantJoinedRoomEvent event) {
+    repository.save(new RoomParticipant(event.getRoomId(), event.getParticipant()));
+  }
 
-    @EventHandler
-    public void on(ParticipantLeftRoomEvent event) {
-        repository.deleteByParticipantAndRoomId(event.getParticipant(), event.getRoomId());
-    }
+  @EventHandler
+  public void on(ParticipantLeftRoomEvent event) {
+    repository.deleteByParticipantAndRoomId(event.getParticipant(), event.getRoomId());
+  }
 }
