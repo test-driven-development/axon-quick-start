@@ -15,52 +15,62 @@ public class ChatRoomTest {
 
   @Test
   public void testCreateChatRoom() throws Exception {
-    testFixture.givenNoPriorActivity()
-        .when(new CreateRoomCommand("roomId", "testroom"))
-        .expectEvents(new RoomCreatedEvent("roomId", "testroom"));
+    testFixture
+      .givenNoPriorActivity()
+      .when(new CreateRoomCommand("roomId", "testroom"))
+      .expectEvents(new RoomCreatedEvent("roomId", "testroom"));
   }
 
   @Test
   public void testJoinChatRoom() throws Exception {
-    testFixture.given(new RoomCreatedEvent("roomId", "testroom"))
-        .when(new JoinRoomCommand("participant", "roomId"))
-        .expectEvents(new ParticipantJoinedRoomEvent("participant", "roomId"));
+    testFixture
+      .given(new RoomCreatedEvent("roomId", "testroom"))
+      .when(new JoinRoomCommand("participant", "roomId"))
+      .expectEvents(new ParticipantJoinedRoomEvent("participant", "roomId"));
   }
 
   @Test
   public void testCannotJoinChatRoomTwice() throws Exception {
-    testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
+    testFixture
+      .given(
+        new RoomCreatedEvent("roomId", "testroom"),
         new ParticipantJoinedRoomEvent("participant", "roomId"))
-        .when(new JoinRoomCommand("participant", "roomId"))
-        .expectException(IllegalStateException.class)
-        .expectNoEvents();
+      .when(new JoinRoomCommand("participant", "roomId"))
+      .expectException(IllegalStateException.class)
+      .expectNoEvents();
   }
 
   @Test
   public void testCannotLeaveChatRoomTwice() throws Exception {
-    testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
+    testFixture
+      .given(
+        new RoomCreatedEvent("roomId", "testroom"),
         new ParticipantJoinedRoomEvent("participant", "roomId"),
         new ParticipantLeftRoomEvent("participant", "roomId"))
-        .when(new LeaveRoomCommand("participant", "roomId"))
-        .expectSuccessfulHandlerExecution()
-        .expectNoEvents();
+      .when(new LeaveRoomCommand("participant", "roomId"))
+      .expectSuccessfulHandlerExecution()
+      .expectNoEvents();
   }
 
   @Test
   public void testPostMessage() throws Exception {
-    testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
+    testFixture
+      .given(
+        new RoomCreatedEvent("roomId", "testroom"),
         new ParticipantJoinedRoomEvent("participant", "roomId"))
-        .when(new PostMessageCommand("participant", "roomId", "Hi there!"))
-        .expectEvents(new MessagePostedEvent("participant", "roomId", "Hi there!"));
+      .when(new PostMessageCommand("participant", "roomId", "Hi there!"))
+      .expectEvents(new MessagePostedEvent("participant", "roomId", "Hi there!"));
   }
 
   @Test
   public void testParticipantCannotPostMessagesOnceHeLeftTheRoom() throws Exception {
-    testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
+    testFixture
+      .given(
+        new RoomCreatedEvent("roomId", "testroom"),
         new ParticipantJoinedRoomEvent("participant", "roomId"),
         new ParticipantLeftRoomEvent("participant", "roomId"))
-        .when(new PostMessageCommand("participant", "roomId", "Hi there!"))
-        .expectException(IllegalStateException.class)
-        .expectNoEvents();
+      .when(new PostMessageCommand("participant", "roomId", "Hi there!"))
+      .expectException(IllegalStateException.class)
+      .expectNoEvents();
   }
 }
