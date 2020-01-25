@@ -1,6 +1,8 @@
 package io.axoniq.labs.chat.commandmodel;
 
 import io.axoniq.labs.chat.coreapi.CreateRoomCommand;
+import io.axoniq.labs.chat.coreapi.JoinRoomCommand;
+import io.axoniq.labs.chat.coreapi.ParticipantJoinedRoomEvent;
 import io.axoniq.labs.chat.coreapi.RoomCreatedEvent;
 import org.axonframework.commandhandling.CommandHandler;
 import org.axonframework.eventsourcing.EventSourcingHandler;
@@ -25,5 +27,10 @@ public class ChatRoom {
   @EventSourcingHandler
   public void on(RoomCreatedEvent event) {
     this.roomId = event.getRoomId();
+  }
+
+  @CommandHandler
+  public void handle(JoinRoomCommand cmd) {
+    apply(new ParticipantJoinedRoomEvent(cmd.getParticipant(), cmd.getRoomId()));
   }
 }
