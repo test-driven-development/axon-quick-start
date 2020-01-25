@@ -58,9 +58,8 @@ public class ChatRoomTest {
         new ParticipantJoinedRoomEvent("participant", "roomId"),
         new ParticipantLeftRoomEvent("participant", "roomId"))
       .when(new LeaveRoomCommand("participant", "roomId"))
-      .expectSuccessfulHandlerExecution()
-      .expectNoEvents();
-  }
+      .expectException(IllegalStateException.class)
+      .expectNoEvents();  }
 
   @Test
   public void testPostMessage() throws Exception {
