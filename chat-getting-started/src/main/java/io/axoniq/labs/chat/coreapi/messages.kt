@@ -14,6 +14,12 @@ data class JoinRoomCommand(
 data class ParticipantJoinedRoomEvent(
   val participant: String, val roomId: String)
 
+data class LeaveRoomCommand(
+  val participant: String, @TargetAggregateIdentifier val roomId: String)
+
+data class ParticipantLeftRoomEvent(
+  val participant: String, val roomId: String)
+
 data class PostMessageCommand(
   val participant: String,
   @TargetAggregateIdentifier val roomId:
@@ -21,12 +27,6 @@ data class PostMessageCommand(
 
 data class MessagePostedEvent(
   val participant: String, val roomId: String, val message: String)
-
-data class LeaveRoomCommand(
-  val participant: String, @TargetAggregateIdentifier val roomId: String)
-
-data class ParticipantLeftRoomEvent(
-  val participant: String, val roomId: String)
 
 class AllRoomsQuery
 data class RoomParticipantsQuery(val roomId: String)
