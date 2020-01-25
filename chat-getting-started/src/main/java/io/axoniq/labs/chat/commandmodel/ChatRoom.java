@@ -44,6 +44,8 @@ public class ChatRoom {
 
   @CommandHandler
   public void handle(LeaveRoomCommand cmd) {
+    if(!this.participants.contains(cmd.getParticipant()))
+      throw new IllegalStateException("cannot leave uninhabited room");
     apply(new ParticipantLeftRoomEvent(cmd.getParticipant(), cmd.getRoomId()));
   }
 
