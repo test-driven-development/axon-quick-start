@@ -53,4 +53,10 @@ public class ChatRoom {
   public void on(ParticipantLeftRoomEvent event) {
     this.participants.remove(event.getParticipant());
   }
+
+  @CommandHandler
+  public void handle(PostMessageCommand cmd) {
+    apply(new MessagePostedEvent(
+      cmd.getParticipant(), cmd.getRoomId(), cmd.getMessage()));
+  }
 }
