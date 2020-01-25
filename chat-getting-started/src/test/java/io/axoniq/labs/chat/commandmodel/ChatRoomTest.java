@@ -45,16 +45,6 @@ public class ChatRoomTest {
   }
 
   @Test
-  public void testCannotLeaveChatRoomTwice() throws Exception {
-    testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
-        new ParticipantJoinedRoomEvent("participant", "roomId"),
-        new ParticipantLeftRoomEvent("participant", "roomId"))
-        .when(new LeaveRoomCommand("participant", "roomId"))
-        .expectSuccessfulHandlerExecution()
-        .expectNoEvents();
-  }
-
-  @Test
   public void testParticipantCannotPostMessagesOnceHeLeftTheRoom() throws Exception {
     testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
         new ParticipantJoinedRoomEvent("participant", "roomId"),
