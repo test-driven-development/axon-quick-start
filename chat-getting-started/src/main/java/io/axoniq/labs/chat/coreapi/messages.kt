@@ -26,7 +26,9 @@ data class PostMessageCommand(
   String, val message: String)
 
 data class MessagePostedEvent(
-  val participant: String, val roomId: String, val message: String)
+  val participant: String,
+  val roomId: String,
+  val message: String)
 
 class AllRoomsQuery
 data class RoomParticipantsQuery(val roomId: String)
