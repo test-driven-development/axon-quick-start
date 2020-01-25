@@ -1,6 +1,8 @@
 package io.axoniq.labs.chat.restapi;
 
 import io.axoniq.labs.chat.coreapi.CreateRoomCommand;
+import io.axoniq.labs.chat.coreapi.JoinRoomCommand;
+import io.axoniq.labs.chat.coreapi.PostMessageCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.*;
 
@@ -30,13 +32,14 @@ public class CommandController {
   @PostMapping("/rooms/{roomId}/participants")
   public Future<Void> joinChatRoom(
     @PathVariable String roomId, @RequestBody @Valid Participant participant) {
-    return null;
+    return this.commandGateway.send(new JoinRoomCommand(participant.getName(), roomId));
   }
 
   @PostMapping("/rooms/{roomId}/messages")
   public Future<Void> postMessage(
     @PathVariable String roomId, @RequestBody @Valid PostMessageRequest message) {
-    return null;
+    return this.commandGateway.send(
+      new PostMessageCommand(message.getParticipant(), roomId, message.getMessage()));
   }
 
   @DeleteMapping("/rooms/{roomId}/participants")
