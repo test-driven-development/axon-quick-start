@@ -10,92 +10,75 @@ import java.util.concurrent.Future;
 @RestController
 public class CommandController {
 
+  @SuppressWarnings( {"unused", "FieldCanBeLocal"})
   private final CommandGateway commandGateway;
 
-  public CommandController(@SuppressWarnings("SpringJavaAutowiringInspection") CommandGateway commandGateway) {
+  public CommandController(CommandGateway commandGateway) {
     this.commandGateway = commandGateway;
   }
 
   @PostMapping("/rooms")
   public Future<String> createChatRoom(@RequestBody @Valid Room room) {
-    // TODO: Send a command for this API call
-    throw new UnsupportedOperationException("Not implemented yet");
+    return null;
   }
 
   @PostMapping("/rooms/{roomId}/participants")
-  public Future<Void> joinChatRoom(@PathVariable String roomId, @RequestBody @Valid Participant participant) {
-    // TODO: Send a command for this API call
-    throw new UnsupportedOperationException("Not implemented yet");
+  public Future<Void> joinChatRoom(
+    @PathVariable String roomId, @RequestBody @Valid Participant participant) {
+    return null;
   }
 
   @PostMapping("/rooms/{roomId}/messages")
-  public Future<Void> postMessage(@PathVariable String roomId, @RequestBody @Valid PostMessageRequest message) {
-    // TODO: Send a command for this API call
-    throw new UnsupportedOperationException("Not implemented yet");
+  public Future<Void> postMessage(
+    @PathVariable String roomId, @RequestBody @Valid PostMessageRequest message) {
+    return null;
   }
 
   @DeleteMapping("/rooms/{roomId}/participants")
-  public Future<Void> leaveChatRoom(@PathVariable String roomId, @RequestBody @Valid Participant participant) {
-    // TODO: Send a command for this API call
-    throw new UnsupportedOperationException("Not implemented yet");
+  public Future<Void> leaveChatRoom(
+    @PathVariable String roomId, @RequestBody @Valid Participant participant) {
+    return null;
   }
 
   public static class PostMessageRequest {
-
-    @NotEmpty
-    private String participant;
-    @NotEmpty
-    private String message;
+    @NotEmpty private String participant;
+    @NotEmpty private String message;
 
     public String getParticipant() {
       return participant;
     }
-
-    public void setParticipant(String participant) {
-      this.participant = participant;
-    }
-
+    public void setParticipant(String participant) { this.participant = participant; }
     public String getMessage() {
       return message;
     }
-
     public void setMessage(String message) {
       this.message = message;
     }
   }
 
   public static class Participant {
-
-    @NotEmpty
-    private String name;
-
+    @NotEmpty private String name;
     public String getName() {
       return name;
     }
-
     public void setName(String name) {
       this.name = name;
     }
   }
 
   public static class Room {
-
     private String roomId;
-    @NotEmpty
-    private String name;
+    @NotEmpty private String name;
 
     public String getRoomId() {
       return roomId;
     }
-
     public void setRoomId(String roomId) {
       this.roomId = roomId;
     }
-
     public String getName() {
       return name;
     }
-
     public void setName(String name) {
       this.name = name;
     }
