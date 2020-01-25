@@ -32,7 +32,7 @@ public class ChatRoomTest {
     testFixture.given(new RoomCreatedEvent("roomId", "testroom"),
         new ParticipantJoinedRoomEvent("participant", "roomId"))
         .when(new JoinRoomCommand("participant", "roomId"))
-        .expectSuccessfulHandlerExecution()
+        .expectException(IllegalStateException.class)
         .expectNoEvents();
   }
 
