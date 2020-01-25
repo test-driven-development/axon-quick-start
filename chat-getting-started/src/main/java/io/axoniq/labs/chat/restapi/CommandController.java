@@ -1,10 +1,12 @@
 package io.axoniq.labs.chat.restapi;
 
+import io.axoniq.labs.chat.coreapi.CreateRoomCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
+import java.util.UUID;
 import java.util.concurrent.Future;
 
 @RestController
@@ -19,7 +21,10 @@ public class CommandController {
 
   @PostMapping("/rooms")
   public Future<String> createChatRoom(@RequestBody @Valid Room room) {
-    return null;
+    String roomId =
+      room.getRoomId() == null ? UUID.randomUUID().toString() : room.getRoomId();
+
+    return this.commandGateway.send(new CreateRoomCommand(roomId, room.getName()));
   }
 
   @PostMapping("/rooms/{roomId}/participants")
