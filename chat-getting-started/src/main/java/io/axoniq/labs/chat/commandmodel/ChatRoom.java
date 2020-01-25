@@ -56,6 +56,8 @@ public class ChatRoom {
 
   @CommandHandler
   public void handle(PostMessageCommand cmd) {
+    if(!this.participants.contains(cmd.getParticipant()))
+      throw new IllegalStateException("cannot post to uninhabited room");
     apply(new MessagePostedEvent(
       cmd.getParticipant(), cmd.getRoomId(), cmd.getMessage()));
   }
