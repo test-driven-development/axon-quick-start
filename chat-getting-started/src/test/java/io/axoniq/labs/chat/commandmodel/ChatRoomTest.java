@@ -41,6 +41,16 @@ public class ChatRoomTest {
   }
 
   @Test
+  public void testLeaveChatRoom() throws Exception {
+    testFixture
+      .given(
+        new RoomCreatedEvent("roomId", "testroom"),
+        new ParticipantJoinedRoomEvent("participant", "roomId"))
+      .when(new LeaveRoomCommand("participant", "roomId"))
+      .expectEvents(new ParticipantLeftRoomEvent("participant", "roomId"));
+  }
+
+  @Test
   public void testCannotLeaveChatRoomTwice() throws Exception {
     testFixture
       .given(
