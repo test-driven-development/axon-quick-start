@@ -18,12 +18,12 @@ public class ChatRoom {
   private String roomId;
 
   @CommandHandler
-  public ChatRoom(CreateRoomCommand cmd){
+  public ChatRoom(CreateRoomCommand cmd) {
     apply(new RoomCreatedEvent(cmd.getRoomId(), cmd.getName()));
   }
 
   @EventSourcingHandler
-  public void on(RoomCreatedEvent event){
+  public void on(RoomCreatedEvent event) {
     this.roomId = event.getRoomId();
   }
 }
