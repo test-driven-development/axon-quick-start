@@ -2,6 +2,7 @@ package io.axoniq.labs.chat.restapi;
 
 import io.axoniq.labs.chat.coreapi.CreateRoomCommand;
 import io.axoniq.labs.chat.coreapi.JoinRoomCommand;
+import io.axoniq.labs.chat.coreapi.LeaveRoomCommand;
 import io.axoniq.labs.chat.coreapi.PostMessageCommand;
 import org.axonframework.commandhandling.gateway.CommandGateway;
 import org.springframework.web.bind.annotation.*;
@@ -45,7 +46,7 @@ public class CommandController {
   @DeleteMapping("/rooms/{roomId}/participants")
   public Future<Void> leaveChatRoom(
     @PathVariable String roomId, @RequestBody @Valid Participant participant) {
-    return null;
+    return this.commandGateway.send(new LeaveRoomCommand(participant.getName(), roomId));
   }
 
   public static class PostMessageRequest {
