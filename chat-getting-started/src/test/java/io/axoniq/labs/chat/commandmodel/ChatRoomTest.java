@@ -59,7 +59,8 @@ public class ChatRoomTest {
         new ParticipantLeftRoomEvent("participant", "roomId"))
       .when(new LeaveRoomCommand("participant", "roomId"))
       .expectException(IllegalStateException.class)
-      .expectNoEvents();  }
+      .expectNoEvents();
+  }
 
   @Test
   public void testPostMessage() throws Exception {
