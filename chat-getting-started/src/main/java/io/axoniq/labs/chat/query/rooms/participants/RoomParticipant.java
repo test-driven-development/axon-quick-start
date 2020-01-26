@@ -9,12 +9,10 @@ public class RoomParticipant {
   @Id
   @GeneratedValue
   private Long id;
-
   private String roomId;
   private String participant;
 
-  public RoomParticipant() {
-  }
+  public RoomParticipant() {}
 
   public RoomParticipant(String roomId, String participant) {
     this.roomId = roomId;
@@ -24,7 +22,6 @@ public class RoomParticipant {
   public String getRoomId() {
     return roomId;
   }
-
   public String getParticipant() {
     return participant;
   }
