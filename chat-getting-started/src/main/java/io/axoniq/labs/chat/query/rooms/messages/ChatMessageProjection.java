@@ -3,16 +3,13 @@ package io.axoniq.labs.chat.query.rooms.messages;
 import org.axonframework.queryhandling.QueryUpdateEmitter;
 import org.springframework.stereotype.Component;
 
-
 @Component
 public class ChatMessageProjection {
-
   private final ChatMessageRepository repository;
-
   private final QueryUpdateEmitter updateEmitter;
 
-  public ChatMessageProjection(ChatMessageRepository repository,
-    QueryUpdateEmitter updateEmitter) {
+  public ChatMessageProjection(
+      ChatMessageRepository repository, QueryUpdateEmitter updateEmitter) {
     this.repository = repository;
     this.updateEmitter = updateEmitter;
   }

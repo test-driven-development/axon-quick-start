@@ -6,18 +6,16 @@ import javax.persistence.Id;
 
 @Entity
 public class ChatMessage {
-
   @Id
   @GeneratedValue
   private Long id;
 
-  private long timestamp;
-  private String roomId;
-  private String message;
   private String participant;
+  @SuppressWarnings("unused") private String roomId;
+  private String message;
+  private long timestamp;
 
-  public ChatMessage() {
-  }
+  public ChatMessage() {}
 
   public ChatMessage(String participant, String roomId, String message, long timestamp) {
     this.participant = participant;
@@ -26,15 +24,7 @@ public class ChatMessage {
     this.timestamp = timestamp;
   }
 
-  public long getTimestamp() {
-    return timestamp;
-  }
-
-  public String getMessage() {
-    return message;
-  }
-
-  public String getParticipant() {
-    return participant;
-  }
+  public long getTimestamp() { return timestamp; }
+  public String getMessage() { return message; }
+  public String getParticipant() { return participant; }
 }
