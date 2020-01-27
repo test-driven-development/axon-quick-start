@@ -3,6 +3,7 @@ package io.axoniq.labs.chat.query.rooms.summary;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@SuppressWarnings("unused")
 @Entity
 public class RoomSummary {
     @Id private String roomId;
@@ -19,9 +20,7 @@ public class RoomSummary {
     public String getRoomId() {
         return roomId;
     }
-    public String getName() {
-        return name;
-    }
+    public String getName() { return name; }
     public void addParticipant() {
         this.participants++;
     }
