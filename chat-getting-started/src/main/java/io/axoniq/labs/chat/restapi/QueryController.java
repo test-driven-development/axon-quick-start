@@ -14,9 +14,7 @@ import java.util.concurrent.Future;
 
 @RestController
 public class QueryController {
-
   private final QueryGateway gateway;
-
   public QueryController(QueryGateway gateway) {
     this.gateway = gateway;
   }
