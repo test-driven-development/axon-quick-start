@@ -46,7 +46,10 @@ public class QueryController {
 
   @GetMapping(value = "/rooms/{roomId}/messages/subscribe", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
   public Flux<ChatMessage> subscribeRoomMessages(@PathVariable String roomId) {
-    // TODO: Send a subscription query for this API call
-    throw new UnsupportedOperationException("Not implemented yet");
+    return this.gateway.subscriptionQuery(
+      new RoomMessagesQuery(roomId),
+      ResponseTypes.multipleInstancesOf(ChatMessage.class),
+      ResponseTypes.instanceOf(ChatMessage.class))
+      .updates();
   }
 }
