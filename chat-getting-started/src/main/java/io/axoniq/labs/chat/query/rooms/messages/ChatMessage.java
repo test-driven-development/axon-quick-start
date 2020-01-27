@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
+@SuppressWarnings("unused")
 @Entity
 public class ChatMessage {
   @Id
@@ -11,7 +12,7 @@ public class ChatMessage {
   private Long id;
 
   private String participant;
-  @SuppressWarnings("unused") private String roomId;
+  private String roomId;
   private String message;
   private long timestamp;
 
