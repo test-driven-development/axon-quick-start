@@ -26,18 +26,18 @@ public class ChatMessageProjection {
 
   @EventHandler
   public void on(MessagePostedEvent event, @Timestamp Instant timestamp) {
-    this.repository.save(new ChatMessage(
+    ChatMessage newMessage = new ChatMessage(
       event.getParticipant(),
       event.getRoomId(),
       event.getMessage(),
-      timestamp.toEpochMilli()));
+      timestamp.toEpochMilli());
+
+    this.repository.save(newMessage);
+    updateEmitter.emit(RoomMessagesQuery.class, query -> true, newMessage);
   }
 
   @QueryHandler
   public List<ChatMessage> handle(RoomMessagesQuery qry) {
     return this.repository.findAllByRoomIdOrderByTimestamp(qry.getRoomId());
   }
-
-  // TODO: Emit updates when new message arrive to notify subscription query by modifying the event handler
-
 }
