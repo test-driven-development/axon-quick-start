@@ -1,0 +1,344 @@
+_type: export
+__export_format: 4
+__export_date: 2020-02-01T12:20:16.741Z
+__export_source: insomnia.desktop.app:v6.5.4
+resources:
+  - _id: req_727c14c45ebc423da51190bfda1b8253
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "wil",
+        	"roomId": "wil's roomId"
+        }
+    created: 1563641331414
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331414
+    method: POST
+    modified: 1580553261155
+    name: create room wil with roomId
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms
+    _type: request
+  - _id: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    created: 1563641295931
+    description: ""
+    modified: 1563641295931
+    name: Insomnia
+    parentId: null
+    _type: workspace
+  - _id: req_0d0ed31f385643d4ad84b4552a67c298
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "niha"
+        }
+    created: 1580553158960
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331364
+    method: POST
+    modified: 1580553233794
+    name: create room niha no roomId
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms
+    _type: request
+  - _id: req_4a5836876b1342518f623e594a0833f3
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "vishita"
+        }
+    created: 1580553283087
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331314
+    method: POST
+    modified: 1580558672018
+    name: create room vishita no roomId
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms
+    _type: request
+  - _id: req_0426e65593934a709b7791ce6c3b522a
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "niha"
+        }
+    created: 1580554334002
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331264
+    method: POST
+    modified: 1580555316535
+    name: niha joins wil's room
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/participants
+    _type: request
+  - _id: req_69ec0111069e4445873dc3d8f0e17581
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "vishita"
+        }
+    created: 1580555325378
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331214
+    method: POST
+    modified: 1580558666146
+    name: vishita joins wil's room
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/participants
+    _type: request
+  - _id: req_a63f10625f654b35a6154b3dffba94e0
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"participant": "niha",
+        	"message": "niha calling wil"
+        }
+    created: 1580556501613
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331189
+    method: POST
+    modified: 1580558661173
+    name: niha messages wil's room
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/messages
+    _type: request
+  - _id: req_ed2454a1681e42c9bd5b4f98b65afa31
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"participant": "vishita",
+        	"message": "vishita calling wil"}
+    created: 1580556505890
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331164
+    method: POST
+    modified: 1580558648482
+    name: vishita joins wil's room
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/messages
+    _type: request
+  - _id: req_5b71e86818ea41428be7048663f12006
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "vinesh"
+        }
+    created: 1580557078207
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331114
+    method: POST
+    modified: 1580558638987
+    name: vinesh joins wil's room
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/participants
+    _type: request
+  - _id: req_05cc5abcc3ae4f7eadeb588ffa33da43
+    authentication: {}
+    body:
+      mimeType: application/json
+      text: |-
+        {
+        	"name": "vinesh"
+        }
+    created: 1580558469472
+    description: ""
+    headers:
+      - id: pair_48025716232545bea5b7a9047b0101ec
+        name: Content-Type
+        value: application/json; charset=utf-8
+    isPrivate: false
+    metaSortKey: -1563641331064
+    method: DELETE
+    modified: 1580558626893
+    name: vinesh leaves wil's room
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/participants
+    _type: request
+  - _id: req_61216c002d1840a88f54ed2f03bed2df
+    authentication: {}
+    body: {}
+    created: 1580558676246
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1563641331014
+    method: GET
+    modified: 1580558722112
+    name: get all rooms
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms
+    _type: request
+  - _id: req_6d32ab12089a486190a1702c6ae7367b
+    authentication: {}
+    body: {}
+    created: 1580558994684
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1563641330964
+    method: GET
+    modified: 1580559092244
+    name: get all room participants
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/participants
+    _type: request
+  - _id: req_b008cabf89704e73907b84e357605628
+    authentication: {}
+    body: {}
+    created: 1580559066493
+    description: ""
+    headers: []
+    isPrivate: false
+    metaSortKey: -1563641330914
+    method: GET
+    modified: 1580559102338
+    name: get all room messages
+    parameters: []
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    settingDisableRenderRequestBody: false
+    settingEncodeUrl: true
+    settingRebuildPath: true
+    settingSendCookies: true
+    settingStoreCookies: true
+    url: http://localhost:8080/rooms/wil's roomId/messages
+    _type: request
+  - _id: env_6ce3f4613f64cc130016773c6a82acb011b95531
+    color: null
+    created: 1563641295967
+    data: {}
+    dataPropertyOrder: null
+    isPrivate: false
+    metaSortKey: 1563641295967
+    modified: 1563641295967
+    name: Base Environment
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    _type: environment
+  - _id: jar_6ce3f4613f64cc130016773c6a82acb011b95531
+    cookies: []
+    created: 1563641295969
+    modified: 1563641295969
+    name: Default Jar
+    parentId: wrk_bfe01c348cec484086c6b5dc4241bfd2
+    _type: cookie_jar
